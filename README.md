@@ -1,72 +1,87 @@
-# 🐜 Bug Merge — Game Jam Project
+# 🐜 DragonFlyMan
 
-My first-ever game jam project, created over a single weekend for a jam themed **“Bug.”**  
-This small Unity game mixes **merging mechanics**, **light strategy**, and **risk management**, featuring **ants** and **dragonflies** as your main units.
+**Bug Merge** — a small merge & risk game with ants and dragonflies, made in one weekend.
 
----
+[![Play on itch.io](https://img.shields.io/badge/Play_on-itch.io-FA5C5C?logo=itchdotio&logoColor=white)](https://vivicaty.itch.io/dragonflyman)
+[![ARCADIA JAM #4](https://img.shields.io/badge/Game_jam-ARCADIA_JAM_%234-8A2BE2)](https://itch.io/jam/utc-arcadia-jam-4)
+![Unity](https://img.shields.io/badge/Unity-6000.4.6f1-000000?logo=unity&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-239120?logo=csharp&logoColor=white)
 
-## 🖼️ Images
+> [!NOTE]
+> My first Unity game, made in **2 days** for the [ARCADIA JAM #4](https://itch.io/jam/utc-arcadia-jam-4) (theme: **“Bug”**).
+> It is **unfinished**: the focus was on the core gameplay, not on polish.
 
-![Image 1](public/dragonflyman.png)
-![Image 2](public/dragonflyman2.png)
-![Image 3](public/dragonflyman3.png)
-
----
-
-## 🎮 Gameplay Overview
-
-At the start of each round, you receive a **level 1 ant**.  
-You must then distribute your insects across **three different paths**, choosing at least one and up to all three.
-
-Each path can be one of the following:
-
-- **Trap** — All insects sent here are lost.
-- **Battle** — If your insects’ combined level is lower than the enemy’s, you lose them. Otherwise, you defeat the enemy.
-- **Chest** — Contains a bug.
-  - If your insect’s level is higher than the bug’s, you rescue and recruit it.
-  - Otherwise, you simply keep your own insect.
-
-Between rounds, you can **merge two insects of the same type** to create a stronger, higher‑level version.
-
-Your goal is simple: **survive and progress as far as possible.**
+![Preparation phase: the 3×3 insect grid, the three paths and the Send button](public/dragonflyman.png)
 
 ---
 
-## 🛠️ Development
+## 🎮 Play
 
-This project was built entirely over a single weekend, focusing on implementing the core gameplay rather than polishing visuals or UI.  
-It was developed using:
+👉 **[Play in your browser on itch.io](https://vivicaty.itch.io/dragonflyman)** (HTML5, no install).
 
-- **Unity**
-- **C#**
-- Quick prototype assets and simple visuals
+## 🛠️ Run locally
+
+**Requirements:** [Unity Hub](https://unity.com/download) with **Unity `6000.4.6f1`**.
+
+1. Clone the repo:
+   ```sh
+   git clone https://github.com/VivicatcHub/DragonFlyMan.git
+   ```
+2. In Unity Hub: **Add → Add project from disk** → select the `DragonFlyMan` folder (the first import takes a few minutes).
+3. Open `Assets/Scenes/ScenePreparation.unity` and press **▶ Play**.
+
+To build: **File → Build Profiles** → pick **Web** or **Linux** → **Build**.
 
 ---
 
-## 📦 Features
+## 📖 How to play
 
-- Merge system for ants and dragonflies
-- Randomized paths each round
-- Risk–reward decision-making
-- Simple progression loop
-- Lightweight prototype visuals
+Each **phase** has two steps.
+
+**1. Preparation**
+- You get a new **level 1 ant** on your 3×3 grid.
+- **Merge:** drop an insect on another one of the **same type and level** to get one insect of the next level (max level 8).
+- **Inspect:** drop an insect on the white cell to see its type and level.
+- **Send:** drag insects onto the three **paths** (at least one insect), then press **Send**.
+
+**2. Results** — each path has a random type:
+
+| Path | What happens |
+| ---- | ------------ |
+| 🎁 **Object** | Hides an insect of level 1–8. If the total level you sent is high enough, you get it for sure; each missing level halves your chance. |
+| ⚔️ **Enemy** | Your insects attack first. If their total level is at least the enemy's level, the enemy **joins your grid**. Otherwise it strikes back and your insects come back **wounded** (they lose levels, minimum 1). |
+| 🪤 **Trap** | Each insect has a chance to come back unharmed (better with a higher total level); otherwise it **loses 1 level**. |
+
+Then drag every insect (and your rewards) back to your grid and press **Next Phase**.
+
+> [!TIP]
+> The first 4 phases are easier: enemies are level 1 and there are no traps.
+
+> [!WARNING]
+> Insects always come back from a path. They can only be lost if your 3×3 grid is **full** at the end of a phase.
+
+## 🧬 Evolution chains
+
+Each insect type has 8 levels:
+
+![Dragonfly evolution chain, from level 1 to level 8](public/dragonflyman2.png)
+![Ant evolution chain, from level 1 to level 8](public/dragonflyman3.png)
 
 ---
 
 ## 🚧 Limitations
 
-Since this was a game jam project, several aspects are intentionally minimal:
+- No game over: insects can't die, so there is no real way to lose.
+- No tutorial, no save system, limited balancing.
+- Basic UI and animations.
 
-- Basic UI and animations
-- Limited balancing
-- No sound design
-- No save system
+## 🎨 Credits
 
-The focus was purely on **gameplay experimentation**.
-
----
+- Game design & code: [Vivicaty](https://github.com/VivicatcHub)
+- Graphics: AI-generated
+- Music: a track from the *Mario Kart* series, © Nintendo, used for the jam only (not covered by the license)
 
 ## 📜 License
 
-This project is shared for learning and inspiration.  
-Feel free to explore the code, mechanics, and structure.
+Code under the [Vivicaty attribution license](LICENSE.md): free to reuse for any purpose, including commercial, as long as you credit **Vivicaty**.
+See [CONTRIBUTING.md](CONTRIBUTING.md) to contribute.
