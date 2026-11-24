@@ -104,3 +104,18 @@ InitTestScene*.unity*
 
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
+
+# WebGL build (playable version is hosted on itch.io)
+/[Bb]uild[Ww]eb/
+
+# Unity crash-recovery scenes
+/[Aa]ssets/_Recovery/
+/[Aa]ssets/_Recovery.meta
+
+# OS / IDE files
+.DS_Store
+Thumbs.db
+.idea/
+
+# Local audit notes
+AVIS.md
