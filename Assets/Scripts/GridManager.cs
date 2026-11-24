@@ -28,7 +28,7 @@ public class GridManager : MonoBehaviour
 
     [Header("Case d'inspection")]
     public Vector2 inspectCellOrigin;
-    private readonly Vector2Int inspectOffset = new(400, 0);
+    public static readonly Vector2Int InspectCellCoords = new(400, 0);
 
     void Awake() => Instance = this;
 
@@ -46,7 +46,7 @@ public class GridManager : MonoBehaviour
         if (minD == dP0)      return WorldToCell(worldPos, path0Origin,       path0Offset);
         if (minD == dP1)      return WorldToCell(worldPos, path1Origin,       path1Offset);
         if (minD == dP2)      return WorldToCell(worldPos, path2Origin,       path2Offset);
-        if (minD == dInspect) return WorldToCell(worldPos, inspectCellOrigin, inspectOffset);
+        if (minD == dInspect) return WorldToCell(worldPos, inspectCellOrigin, InspectCellCoords);
         return WorldToCell(worldPos, gridOrigin, Vector2Int.zero);
     }
 
@@ -66,7 +66,7 @@ public class GridManager : MonoBehaviour
 
     public Vector3 GetWorldPosition(Vector2Int cell)
     {
-        if (cell.x == 400)
+        if (cell.x == InspectCellCoords.x)
             return new Vector3(inspectCellOrigin.x, inspectCellOrigin.y, 0f);
 
         Vector2    origin = OriginFor(cell);
@@ -96,7 +96,7 @@ public class GridManager : MonoBehaviour
     public bool IsValidCell(Vector2Int cell)
     {
         // Case d'inspection
-        if (cell.x == 400 && cell.y == 0) return true;
+        if (cell == InspectCellCoords) return true;
 
         // Grilles chemin
         if (cell.x >= 100)
@@ -214,19 +214,6 @@ public class GridManager : MonoBehaviour
             var center = new Vector3(origin.x, origin.y + r * cellSize, 0);
             Gizmos.DrawWireCube(center, Vector3.one * cellSize * 0.95f);
         }
-    }
-
-    public void ClearAllCells()
-    {
-        allCells.Clear();
-    }
-    
-    // Place un objet sans vérifier les restrictions de phase
-    public void ForceRegisterObject(GridObject obj, Vector2Int cell)
-    {
-        allCells[cell] = obj;
-        obj.currentCell = cell;
-        obj.transform.position = GetWorldPosition(cell);
     }
 
     // Version sans restriction de phase — pour SceneResults

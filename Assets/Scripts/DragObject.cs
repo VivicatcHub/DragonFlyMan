@@ -21,7 +21,6 @@ public class DragObject : MonoBehaviour
 
     void Start()
     {
-        gridObject = GetComponent<GridObject>();
         // Ne fait le snap que si l'objet n'est pas déjà enregistré
         if (GridManager.Instance.GetObjectAt(gridObject.currentCell) != this.gridObject)
         {

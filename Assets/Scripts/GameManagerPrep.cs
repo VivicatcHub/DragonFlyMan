@@ -54,7 +54,7 @@ public class GameManagerPrep : MonoBehaviour
     public void OnSendExpeditions()
     {
         // Vérifie qu'aucun insecte n'est dans la case d'inspection
-        Vector2Int inspectCell = new Vector2Int(400, 0);
+        Vector2Int inspectCell = GridManager.InspectCellCoords;
         if (GridManager.Instance.GetObjectAt(inspectCell) != null)
         {
             PhaseUIPrep.Instance.ShowMessage("Retire l'insecte de la case d'inspection avant d'envoyer !");
