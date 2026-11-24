@@ -34,6 +34,6 @@ public class InspectCell : MonoBehaviour
         }
 
         string typeName = currentInsect.antType.ToString();
-        infoText.text   = $"{typeName}\nNiveau {currentInsect.level}";
+        infoText.text   = $"{typeName}\nLevel {currentInsect.level}";
     }
 }

@@ -19,7 +19,7 @@ public class PhaseUIResults : MonoBehaviour
 
     public void UpdatePhase(int phase)
     {
-        if (phaseLabel) phaseLabel.text = $"Phase {phase} — Résultats";
+        if (phaseLabel) phaseLabel.text = $"Phase {phase} — Results";
     }
 
     public void ShowResults(PathResult[] results)
@@ -27,18 +27,18 @@ public class PhaseUIResults : MonoBehaviour
         if (resultsText == null || results == null) return;
 
         var sb    = new StringBuilder();
-        string[] names = { "Chemin 1", "Chemin 2", "Chemin 3" };
+        string[] names = { "Path 1", "Path 2", "Path 3" };
 
         for (int i = 0; i < results.Length; i++)
         {
             if (results[i] == null)
             {
-                sb.AppendLine($"<b>{names[i]}</b> : aucun insecte envoyé.\n");
+                sb.AppendLine($"<b>{names[i]}</b>: no insect sent.\n");
                 continue;
             }
             sb.AppendLine($"<b>{names[i]}</b> [{results[i].type}]");
-            sb.AppendLine(results[i].resultLog != "" ? results[i].resultLog : "Aucun insecte envoyé.");
-            sb.AppendLine($"  Survivants : {results[i].survivors.Count}");
+            sb.AppendLine(results[i].resultLog != "" ? results[i].resultLog : "No insect sent.");
+            sb.AppendLine($"  Survivors: {results[i].survivors.Count}");
             sb.AppendLine();
         }
 

@@ -70,7 +70,7 @@ public class GameManagerResults : MonoBehaviour
             if (pathObjs.Count > 0)
             {
                 PhaseUIResults.Instance.ShowMessage(
-                    "Récupère tous tes insectes des chemins avant de continuer !");
+                    "Collect all your insects from the paths before continuing!");
                 return;
             }
         }
@@ -121,7 +121,7 @@ public class GameManagerResults : MonoBehaviour
                     }
 
                 if (!placed)
-                    Debug.LogWarning($"Grille pleine, insecte niv.{obj.level} perdu.");
+                    Debug.LogWarning($"Grid full, level {obj.level} insect lost.");
             }
         }
     }

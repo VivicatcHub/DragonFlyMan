@@ -57,7 +57,7 @@ public class GameManagerPrep : MonoBehaviour
         Vector2Int inspectCell = GridManager.InspectCellCoords;
         if (GridManager.Instance.GetObjectAt(inspectCell) != null)
         {
-            PhaseUIPrep.Instance.ShowMessage("Retire l'insecte de la case d'inspection avant d'envoyer !");
+            PhaseUIPrep.Instance.ShowMessage("Remove the insect from the inspection cell before sending!");
             return;
         }
 
@@ -68,7 +68,7 @@ public class GameManagerPrep : MonoBehaviour
 
         if (!anyAssigned)
         {
-            PhaseUIPrep.Instance.ShowMessage("Assigne au moins un insecte à un chemin !");
+            PhaseUIPrep.Instance.ShowMessage("Assign at least one insect to a path!");
             return;
         }
 
@@ -143,12 +143,12 @@ public class GameManagerPrep : MonoBehaviour
 
         if (Random.value <= chance)
         {
-            result.resultLog = $"Objet niv.{path.rewardLevel} gagné ! ({Mathf.RoundToInt(chance * 100)}%)";
+            result.resultLog = $"Level {path.rewardLevel} object won! ({Mathf.RoundToInt(chance * 100)}%)";
             result.rewards.Add(new InsectData { level = path.rewardLevel, antType = path.rewardAntType });
         }
         else
         {
-            result.resultLog = $"Objet niv.{path.rewardLevel} manqué. ({Mathf.RoundToInt(chance * 100)}%)";
+            result.resultLog = $"Level {path.rewardLevel} object missed. ({Mathf.RoundToInt(chance * 100)}%)";
         }
     }
 
@@ -188,12 +188,12 @@ public class GameManagerPrep : MonoBehaviour
         if (enemyHP <= 0)
         {
             result.enemyDefeated = true;
-            result.resultLog     = $"Ennemi niv.{path.enemyLevel} vaincu ! Il rejoint ta grille.";
+            result.resultLog     = $"Level {path.enemyLevel} enemy defeated! It joins your grid.";
             result.rewards.Add(new InsectData { level = path.enemyLevel, antType = path.rewardAntType });
         }
         else
         {
-            result.resultLog = $"Ennemi niv.{path.enemyLevel} survit ({enemyHP} PV restants).";
+            result.resultLog = $"Level {path.enemyLevel} enemy survived ({enemyHP} HP left).";
         }
     }
 
@@ -212,6 +212,6 @@ public class GameManagerPrep : MonoBehaviour
             else ins.level = Mathf.Max(1, ins.level - 1);
             result.survivors.Add(ins);
         }
-        result.resultLog = $"Piège (x={path.trapX}) : {Mathf.RoundToInt(chance * 100)}% chance. {indemnes}/{sent.Count} indemnes.";
+        result.resultLog = $"Trap (x={path.trapX}): {Mathf.RoundToInt(chance * 100)}% chance. {indemnes}/{sent.Count} unharmed.";
     }
 }
